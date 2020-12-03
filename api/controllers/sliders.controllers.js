@@ -6,13 +6,7 @@ const bodyParser = require("body-parser");
 
 slidersController.getAll = async (req, res) => {
   try {
-    let sliders = await Sliders.paginate(
-      {},
-      {
-        limit: parseInt(req.query.limit),
-        page: parseInt(req.query.page),
-      }
-    );
+    let sliders = await Sliders.paginate();
     res.status(200).send({
       code: 200,
       message: "Successful",
