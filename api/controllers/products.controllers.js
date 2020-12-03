@@ -47,24 +47,24 @@ productsController.getAll = async (req, res) => {
 productsController.addProduct = async (req, res) => {
   try {
     const body = req.body;
-    const urls = [];
-    const uploader = async (path) => await cloudinary.uploads(path, "Images");
-    body.variations = JSON.parse(body.variations);
-    const files = req.files;
-    for (const file of files) {
-      const imagepath = file.path;
-      const newPath = await uploader(imagepath);
-      urls.push(newPath);
-      fs.unlinkSync(imagepath);
-    }
+    // const urls = [];
+    // const uploader = async (path) => await cloudinary.uploads(path, "Images");
+    // body.variations = JSON.parse(body.variations);
+    // const files = req.files;
+    // for (const file of files) {
+    //   const imagepath = file.path;
+    //   const newPath = await uploader(imagepath);
+    //   urls.push(newPath);
+    //   fs.unlinkSync(imagepath);
+    // }
     // var count = 0;
     // for (let k = 0; k < body.image_link.length; k++) {
     //   body.image_link[k] = urls[count];
     //   count++;
-    // }
-    body.image_link1 = urls[0];
-    body.image_link2 = urls[1];
-    body.image_link3 = urls[2];
+    // // }
+    // body.image_link1 = urls[0];
+    // body.image_link2 = urls[1];
+    // body.image_link3 = urls[2];
     const product = new Products(body);
 
     const result = await product.save();

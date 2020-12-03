@@ -9,11 +9,10 @@ const Slider = new Schema({
   building_name: {
     type: String,
   },
-  image_link1: [
+  image_link1: 
     {
-      url: { type: String },
+      type: String 
     },
-  ],
 
   entry_date: {
     type: Date,
