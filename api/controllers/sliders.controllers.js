@@ -25,19 +25,17 @@ slidersController.getAll = async (req, res) => {
 };
 
 slidersController.addSlider = async (req, res) => {
-  console.log("aaa");
   try {
     const body = req.body;
-    const urls = [];
-    const uploader = async (path) => await cloudinary.uploads(path, "Images");
-    const files = req.files;
-    for (const file of files) {
-      const imagepath = file.path;
-      const newPath = await uploader(imagepath);
-      urls.push(newPath);
-      fs.unlinkSync(imagepath);
-    }
-    body.image_link1 = urls[0];
+    // const urls = [];
+    // const uploader = async (path) => await cloudinary.uploads(path, "Images");
+    // const files = req.files;
+    // for (const file of files) {
+    //   const imagepath = file.path;
+    //   const newPath = await uploader(imagepath);
+    //   urls.push(newPath);
+    //   fs.unlinkSync(imagepath);
+    //}
     const slider = new Sliders(body);
 
     const result = await slider.save();
