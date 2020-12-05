@@ -127,24 +127,19 @@ app
     const UsersRoutes = require("./api/routes/users.routes");
     const ProductsRoutes = require("./api/routes/products.routes");
     const SliderRoutes = require("./api/routes/sliders.routes");
-    // const Orders_Routes = require("./api/routes/orders.routes");
+    const OrdersRoutes = require("./api/routes/orders.routes");
 
 
     app.use("/api/users", UsersRoutes);
     app.use("/api/products", ProductsRoutes);
     app.use("/api/sliders", SliderRoutes);
-    // app.use("/api/orders", Orders_Routes);
+    app.use("/api/orders", OrdersRoutes);
 
     
     app.get("*", (req, res) => {
       return handle(req, res);
     });
-   
-
-
-
-
-   
+      
     app.set("port", process.env.PORT);
     server.listen(app.get("port"));
     console.log("listening on port", app.get("port"));
