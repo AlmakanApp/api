@@ -1,6 +1,6 @@
 const ordersController = {};
 const Orders = require("../models/orders.model");
-
+const Products = require("../models/products.model");
 ordersController.getAll = async (req, res) => {
   try {
     let orders = await Orders.paginate();
@@ -17,7 +17,7 @@ ordersController.getAll = async (req, res) => {
 
 ordersController.getUserOrders = async (req, res) => {
   try {
-    let orders = await Orders.paginate({user_id:req.params_id});
+    let orders = await Orders.paginate({ user_id: req.params_id });
     res.status(200).send({
       code: 200,
       message: "Successful",
@@ -31,7 +31,7 @@ ordersController.getUserOrders = async (req, res) => {
 
 ordersController.getCustomerOrders = async (req, res) => {
   try {
-    let orders = await Orders.paginate({c_id:req.params_id});
+    let orders = await Orders.paginate({ c_id: req.params_id });
     res.status(200).send({
       code: 200,
       message: "Successful",
@@ -43,11 +43,13 @@ ordersController.getCustomerOrders = async (req, res) => {
   }
 };
 
-
 // Add Orders In Mongodb
 ordersController.addOrder = async (req, res) => {
   try {
     const body = req.body;
+    var datetime = new Date();
+    body.entry_date = datetime;
+
     const orders = new Orders(body);
     const result = await orders.save();
     res.status(200).send({

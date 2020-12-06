@@ -47,6 +47,8 @@ productsController.getAll = async (req, res) => {
 productsController.addProduct = async (req, res) => {
   try {
     const body = req.body;
+    var datetime = new Date();
+  body.entry_date = datetime;
     // const urls = [];
     // const uploader = async (path) => await cloudinary.uploads(path, "Images");
     // body.variations = JSON.parse(body.variations);
