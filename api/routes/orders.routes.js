@@ -5,6 +5,7 @@ const orderController = require('../controllers/orders.controllers');
 
 // get Requests
 router.get("/", orderController.getAll);
+router.get("/orders/:_id", orderController.getOrdersById);
 router.get("/user/orders/:_id", orderController.getUserOrders);
 router.get("/customer/orders/by/:_id", orderController.getCustomerOrders);
 

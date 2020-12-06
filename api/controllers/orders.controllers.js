@@ -15,6 +15,19 @@ ordersController.getAll = async (req, res) => {
   }
 };
 
+ordersController.getOrdersById= async (req, res) => {
+  try {
+    let orders = await Orders.paginate({ _id: req.params_id });
+    res.status(200).send({
+      code: 200,
+      message: "Successful",
+      data: orders,
+    });
+  } catch (error) {
+    console.log("error", error);
+    return res.status(500).send(error);
+  }
+};
 ordersController.getUserOrders = async (req, res) => {
   try {
     let orders = await Orders.paginate({ user_id: req.params_id });
@@ -52,15 +65,23 @@ ordersController.addOrder = async (req, res) => {
 
     const orders = new Orders(body);
     const result = await orders.save();
+
     res.status(200).send({
       code: 200,
       message: "orders Added Successfully",
     });
-
+    // let products=await Products.find({_id:body.p_id});
+    // if(products.variations[body.floor-1].flats[flat-1].bed_type==0){
+    //   res.status(201).send({
+    //   code: 201,
+    //   message: "This Bed Type Does Not Exists",
+    // });
+    // }
+    // else{
     // Products.findOneAndUpdate(
     //   { _id: body.p_id },
     //   {
-    //     $set: {variations[body.floor-1].[flat-1].bed_type=0},
+    //     $set: variations[body.floor-1].flats[flat-1].bed_type=0,
     //   },
     //   {
     //     returnNewDocument: true,
@@ -72,6 +93,7 @@ ordersController.addOrder = async (req, res) => {
     //     });
     //   }
     // );
+    // }
 
   } catch (error) {
     console.log("error", error);
