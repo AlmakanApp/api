@@ -1,8 +1,8 @@
 const slidersController = {};
 const Sliders = require("../models/sliders.model");
-const fs = require("fs");
-const cloudinary = require("../../cloudinary");
-const bodyParser = require("body-parser");
+// const fs = require("fs");
+// const cloudinary = require("../../cloudinary");
+// const bodyParser = require("body-parser");
 
 slidersController.getAll = async (req, res) => {
   try {
@@ -56,7 +56,7 @@ slidersController.deleteSlider = async (req, res) => {
       message: "ID missing",
     });
   } else {
-    Slider.findByIdAndDelete(_id, function (err) {
+    Sliders.findByIdAndDelete(_id, function (err) {
       res.status(200).send({
         code: 200,
         message: "deleted Successful",
