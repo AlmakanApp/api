@@ -17,7 +17,7 @@ ordersController.getAll = async (req, res) => {
 
 ordersController.getOrdersById= async (req, res) => {
   try {
-    let orders = await Orders.paginate({ _id: req.params_id });
+    let orders = await Orders.paginate({ _id: req.params._id });
     res.status(200).send({
       code: 200,
       message: "Successful",
@@ -30,7 +30,7 @@ ordersController.getOrdersById= async (req, res) => {
 };
 ordersController.getUserOrders = async (req, res) => {
   try {
-    let orders = await Orders.paginate({ user_id: req.params_id });
+    let orders = await Orders.paginate({ user_id: req.params._id });
     res.status(200).send({
       code: 200,
       message: "Successful",
@@ -44,7 +44,7 @@ ordersController.getUserOrders = async (req, res) => {
 
 ordersController.getCustomerOrders = async (req, res) => {
   try {
-    let orders = await Orders.paginate({ c_id: req.params_id });
+    let orders = await Orders.paginate({ c_id: req.params._id });
     res.status(200).send({
       code: 200,
       message: "Successful",
