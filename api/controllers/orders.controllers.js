@@ -56,6 +56,23 @@ ordersController.addOrder = async (req, res) => {
       code: 200,
       message: "orders Added Successfully",
     });
+
+    // Products.findOneAndUpdate(
+    //   { _id: body.p_id },
+    //   {
+    //     $set: {variations[body.floor-1].[flat-1].bed_type=0},
+    //   },
+    //   {
+    //     returnNewDocument: true,
+    //   },
+    //   function (error, result) {
+    //     res.status(200).send({
+    //       code: 200,
+    //       message: "Data Updated Successfully",
+    //     });
+    //   }
+    // );
+
   } catch (error) {
     console.log("error", error);
     return res
@@ -77,7 +94,7 @@ ordersController.updateOrder = async (req, res) => {
     Orders.findOneAndUpdate(
       { _id: _id },
       {
-        $set: req.body.status,
+        $set: req.body,
       },
       {
         returnNewDocument: true,
