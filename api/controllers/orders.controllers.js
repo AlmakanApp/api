@@ -1,5 +1,5 @@
 const ordersController = {};
-const Orders = require("../models/sliders.model");
+const Orders = require("../models/orders.model");
 
 ordersController.getAll = async (req, res) => {
   try {
