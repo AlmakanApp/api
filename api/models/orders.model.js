@@ -12,6 +12,15 @@ const Order = new Schema({
   c_id: {
     type: Schema.Types.ObjectId,
   },
+  c_name:{
+    type:String
+  },
+  mobile:{
+    type:String
+  },
+  address:{
+    type:String
+  },
   floor: {
     type: String,
   },

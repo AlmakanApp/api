@@ -15,6 +15,35 @@ ordersController.getAll = async (req, res) => {
   }
 };
 
+ordersController.getUserOrders = async (req, res) => {
+  try {
+    let orders = await Orders.paginate({user_id:req.params_id});
+    res.status(200).send({
+      code: 200,
+      message: "Successful",
+      data: orders,
+    });
+  } catch (error) {
+    console.log("error", error);
+    return res.status(500).send(error);
+  }
+};
+
+ordersController.getCustomerOrders = async (req, res) => {
+  try {
+    let orders = await Orders.paginate({c_id:req.params_id});
+    res.status(200).send({
+      code: 200,
+      message: "Successful",
+      data: orders,
+    });
+  } catch (error) {
+    console.log("error", error);
+    return res.status(500).send(error);
+  }
+};
+
+
 // Add Orders In Mongodb
 ordersController.addOrder = async (req, res) => {
   try {
